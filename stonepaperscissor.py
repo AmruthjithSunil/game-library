@@ -1,0 +1,1 @@
+total_rounds = int(input("Enter the number of rounds : "))
