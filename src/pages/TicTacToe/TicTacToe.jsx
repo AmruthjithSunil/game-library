@@ -9,6 +9,7 @@ const Row = styled.div`
 
 export default function TicTacToe() {
   const [activePlayer, setActivePlayer] = useState(false);
+  //player1 is false and player2 is true
 
   function updateActivePlayer() {
     setActivePlayer((activePlayer) => !activePlayer);

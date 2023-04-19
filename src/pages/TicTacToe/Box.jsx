@@ -11,8 +11,13 @@ const Frame = styled.div`
 
 export default function Box({ activePlayer, updateActivePlayer }) {
   const [content, setContent] = useState("");
+  const [isFilled, setIsFilled] = useState(false);
 
   function clickHandler() {
+    if (isFilled) {
+      return;
+    }
+    setIsFilled(true);
     activePlayer ? setContent("O") : setContent("X");
     updateActivePlayer();
   }
