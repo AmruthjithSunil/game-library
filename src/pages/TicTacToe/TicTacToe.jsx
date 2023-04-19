@@ -15,51 +15,26 @@ export default function TicTacToe() {
     setActivePlayer((activePlayer) => !activePlayer);
   }
 
+  const boxes = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+  ];
+
   return (
     <>
       <Link to="/">Home</Link>
-      <Row>
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-      </Row>
-      <Row>
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-      </Row>
-      <Row>
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-        <Box
-          activePlayer={activePlayer}
-          updateActivePlayer={updateActivePlayer}
-        />
-      </Row>
+      {boxes.map((rows) => (
+        <Row key={rows[0]}>
+          {rows.map((box) => (
+            <Box
+              key={box}
+              activePlayer={activePlayer}
+              updateActivePlayer={updateActivePlayer}
+            />
+          ))}
+        </Row>
+      ))}
     </>
   );
 }
