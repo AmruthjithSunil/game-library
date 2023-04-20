@@ -2,8 +2,8 @@ import { useState } from "react";
 import styled from "styled-components";
 
 const Frame = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 90px;
+  height: 90px;
   border: solid 1px;
   padding: auto;
   text-align: center;
@@ -22,5 +22,9 @@ export default function Box({ activePlayer, updateActivePlayer }) {
     updateActivePlayer();
   }
 
-  return <Frame onClick={clickHandler}>{content}</Frame>;
+  return (
+    <Frame onClick={clickHandler}>
+      <h1>{content}</h1>
+    </Frame>
+  );
 }
