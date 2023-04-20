@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 const Frame = styled.div`
@@ -9,16 +8,19 @@ const Frame = styled.div`
   text-align: center;
 `;
 
-export default function Box({ activePlayer, updateActivePlayer }) {
-  const [content, setContent] = useState("");
-  const [isFilled, setIsFilled] = useState(false);
-
+export default function Box({
+  id,
+  updateBoxes,
+  activePlayer,
+  updateActivePlayer,
+  content,
+}) {
   function clickHandler() {
-    if (isFilled) {
+    if (content != "") {
       return;
     }
-    setIsFilled(true);
-    activePlayer ? setContent("O") : setContent("X");
+    const c = activePlayer ? "O" : "X";
+    updateBoxes(id, c);
     updateActivePlayer();
   }
 

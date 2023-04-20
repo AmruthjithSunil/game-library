@@ -21,40 +21,58 @@ export default function TicTacToe() {
     setActivePlayer((activePlayer) => !activePlayer);
   }
 
-  const boxes = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-  ];
+  const [boxes, setBoxes] = useState([
+    [
+      { id: 0, content: "" },
+      { id: 1, content: "" },
+      { id: 2, content: "" },
+    ],
+    [
+      { id: 3, content: "" },
+      { id: 4, content: "" },
+      { id: 5, content: "" },
+    ],
+    [
+      { id: 6, content: "" },
+      { id: 7, content: "" },
+      { id: 8, content: "" },
+    ],
+  ]);
 
-  // const [boxContent, setBoxContent] = useState([
-  //   ["", "", ""],
-  //   ["", "", ""],
-  //   ["", "", ""],
-  // ]);
-
-  // function updateBoxContent(actPlayer, id) {
-  //   const row = Math.floor((id - 1) / 3);
-  //   const col = (id - 1) % 3;
-
-  // }
+  function updateBoxes(id, content) {
+    // if (content === "") {
+    //   setPlayOrder((playOrder) => {
+    //     playOrder.pop();
+    //     return playOrder;
+    //   });
+    // } else {
+    //   setPlayOrder((playOrder) => [...playOrder, id]);
+    // }
+    setBoxes((boxes) => {
+      boxes[Math.floor(id / 3)][id % 3].content = content;
+      return boxes;
+    });
+  }
 
   return (
     <>
       <Link to="/">Home</Link>
       <PlayGround>
-        {boxes.map((rows) => (
-          <Row key={rows[0]}>
-            {rows.map((box) => (
+        {boxes.map((row) => (
+          <Row key={row[0].id}>
+            {row.map((box) => (
               <Box
-                key={box}
-                id={box}
+                key={box.id}
+                id={box.id}
+                content={box.content}
+                updateBoxes={updateBoxes}
                 activePlayer={activePlayer}
                 updateActivePlayer={updateActivePlayer}
               />
             ))}
           </Row>
         ))}
+        {/* <button onClick={undoHandler}>undo</button> */}
       </PlayGround>
     </>
   );
