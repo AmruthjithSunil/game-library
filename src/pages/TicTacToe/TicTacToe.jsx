@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Box from "./Box";
 import { useState } from "react";
+import O from "./O";
+import X from "./X";
 
 const Row = styled.div`
   display: flex;
@@ -10,7 +12,21 @@ const Row = styled.div`
 const PlayGround = styled.div`
   width: 270px;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 60px;
+  text-align: center;
+`;
+
+const BackName = styled.h5`
+  color: white;
+`;
+
+const Title = styled.h1`
+  color: white;
+  text-align: center;
+`;
+
+const Flex = styled.div`
+  display: flex;
 `;
 
 export default function TicTacToe() {
@@ -56,7 +72,10 @@ export default function TicTacToe() {
 
   return (
     <>
-      <Link to="/">Home</Link>
+      <Link to="/">
+        <BackName>{"<-"}Home</BackName>
+      </Link>
+      <Title>Tic Tac Toe</Title>
       <PlayGround>
         {boxes.map((row) => (
           <Row key={row[0].id}>
@@ -72,6 +91,7 @@ export default function TicTacToe() {
             ))}
           </Row>
         ))}
+        {activePlayer ? <O /> : <X />}
         {/* <button onClick={undoHandler}>undo</button> */}
       </PlayGround>
     </>

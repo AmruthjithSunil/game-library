@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import X from "./X";
+import O from "./O";
 
 const Frame = styled.div`
   width: 90px;
   height: 90px;
-  border: solid 1px;
+  border: solid 1.5px #ffffcc;
   padding: auto;
   text-align: center;
 `;
@@ -26,7 +28,8 @@ export default function Box({
 
   return (
     <Frame onClick={clickHandler}>
-      <h1>{content}</h1>
+      {content === "X" && <X />}
+      {content === "O" && <O />}
     </Frame>
   );
 }
