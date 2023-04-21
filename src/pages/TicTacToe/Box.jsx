@@ -14,9 +14,6 @@ const Frame = styled.div`
   border-radius: ${({ id }) => id === 2 && "0px 10px 0px 0px"};
   border-radius: ${({ id }) => id === 8 && "0px 0px 10px 0px"};
   border-radius: ${({ id }) => id === 6 && "0px 0px 0px 10px"};
-  &:active {
-    width: 115px;
-  }
 `;
 
 const Content = styled.div`
