@@ -4,7 +4,7 @@ import Box from "./Box";
 import { useState } from "react";
 import O from "./O.svg";
 import X from "./X.svg";
-import backArrow from "../../UI/Svg/Back arrow.png";
+import backArrow from "../../UI/Svg/backArrow.png";
 
 const Row = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const PlayGround = styled.div`
 `;
 
 const BackName = styled.button`
-  margin: 10px;
+  margin: 8px;
   background: #36454f;
   border: none;
   font-size: 20px;
@@ -32,7 +32,7 @@ const Title = styled.h1`
 
 const TurnDisplay = styled.div`
   color: white;
-  margin: 48px;
+  margin: 32px;
   font-size: 32px;
 `;
 
@@ -63,18 +63,30 @@ export default function TicTacToe() {
   ]);
 
   function updateBoxes(id, content) {
-    // if (content === "") {
-    //   setPlayOrder((playOrder) => {
-    //     playOrder.pop();
-    //     return playOrder;
-    //   });
-    // } else {
-    //   setPlayOrder((playOrder) => [...playOrder, id]);
-    // }
     setBoxes((boxes) => {
       boxes[Math.floor(id / 3)][id % 3].content = content;
       return boxes;
     });
+  }
+
+  function resetHandler() {
+    setBoxes([
+      [
+        { id: 0, content: "" },
+        { id: 1, content: "" },
+        { id: 2, content: "" },
+      ],
+      [
+        { id: 3, content: "" },
+        { id: 4, content: "" },
+        { id: 5, content: "" },
+      ],
+      [
+        { id: 6, content: "" },
+        { id: 7, content: "" },
+        { id: 8, content: "" },
+      ],
+    ]);
   }
 
   return (
@@ -103,12 +115,15 @@ export default function TicTacToe() {
         ))}
         <TurnDisplay>
           {activePlayer ? (
-            <img src={O} height="30px" />
+            <img src={O} height="32px" />
           ) : (
-            <img src={X} height="30px" />
+            <img src={X} height="32px" />
           )}
           's turn
         </TurnDisplay>
+        <div>
+          <BackName onClick={resetHandler}>Reset</BackName>
+        </div>
       </PlayGround>
     </>
   );
