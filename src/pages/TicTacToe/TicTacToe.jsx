@@ -4,6 +4,7 @@ import Box from "./Box";
 import { useState } from "react";
 import O from "./O.svg";
 import X from "./X.svg";
+import backArrow from "../../UI/Svg/Back arrow.png";
 
 const Row = styled.div`
   display: flex;
@@ -12,11 +13,15 @@ const Row = styled.div`
 const PlayGround = styled.div`
   width: 327px;
   margin: auto;
-  margin-top: 60px;
+  margin-top: 30px;
   text-align: center;
 `;
 
-const BackName = styled.h5`
+const BackName = styled.button`
+  margin: 10px;
+  background: #36454f;
+  border: none;
+  font-size: 20px;
   color: white;
 `;
 
@@ -75,7 +80,10 @@ export default function TicTacToe() {
   return (
     <>
       <Link to="/">
-        <BackName>{"<-"}Home</BackName>
+        <BackName>
+          <img src={backArrow} height="15px" />
+          Home
+        </BackName>
       </Link>
       <Title>Tic Tac Toe</Title>
       <PlayGround>
