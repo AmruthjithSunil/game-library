@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Box from "./Box";
 import { useState } from "react";
-import O from "./O";
-import X from "./X";
+import O from "./O.svg";
+import X from "./X.svg";
 
 const Row = styled.div`
   display: flex;
 `;
 
 const PlayGround = styled.div`
-  width: 270px;
+  width: 327px;
   margin: auto;
   margin-top: 60px;
   text-align: center;
@@ -25,8 +25,10 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Flex = styled.div`
-  display: flex;
+const TurnDisplay = styled.div`
+  color: white;
+  margin: 50px;
+  font-size: 30px;
 `;
 
 export default function TicTacToe() {
@@ -91,8 +93,14 @@ export default function TicTacToe() {
             ))}
           </Row>
         ))}
-        {activePlayer ? <O /> : <X />}
-        {/* <button onClick={undoHandler}>undo</button> */}
+        <TurnDisplay>
+          {activePlayer ? (
+            <img src={O} height="30px" />
+          ) : (
+            <img src={X} height="30px" />
+          )}
+          's turn
+        </TurnDisplay>
       </PlayGround>
     </>
   );

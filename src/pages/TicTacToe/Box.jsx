@@ -1,21 +1,26 @@
 import styled from "styled-components";
-import X from "./X";
-import O from "./O";
+import X from "./X.svg";
+import O from "./O.svg";
 
 const Frame = styled.div`
-  width: 90px;
-  height: 90px;
-  border: solid 1px #ffffcc;
-  padding: auto;
-  text-align: center;
-  border-left: ${({ id }) => id % 3 === 0 && "2px solid #ffffcc"};
-  border-right: ${({ id }) => id % 3 === 2 && "2px solid #ffffcc"};
-  border-top: ${({ id }) => Math.floor(id / 3) === 0 && "2px solid #ffffcc"};
-  border-bottom: ${({ id }) => Math.floor(id / 3) === 2 && "2px solid #ffffcc"};
+  width: 109px;
+  height: 109px;
+  border: solid 3px #ffffcc;
+  border-left: ${({ id }) => id % 3 === 0 && "4px solid #ffffcc"};
+  border-right: ${({ id }) => id % 3 === 2 && "4px solid #ffffcc"};
+  border-top: ${({ id }) => Math.floor(id / 3) === 0 && "4px solid #ffffcc"};
+  border-bottom: ${({ id }) => Math.floor(id / 3) === 2 && "4px solid #ffffcc"};
   border-radius: ${({ id }) => id === 0 && "10px 0px 0px 0px"};
   border-radius: ${({ id }) => id === 2 && "0px 10px 0px 0px"};
   border-radius: ${({ id }) => id === 8 && "0px 0px 10px 0px"};
   border-radius: ${({ id }) => id === 6 && "0px 0px 0px 10px"};
+`;
+
+const Content = styled.div`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export default function Box({
@@ -36,8 +41,10 @@ export default function Box({
 
   return (
     <Frame id={id} onClick={clickHandler}>
-      {content === "X" && <X />}
-      {content === "O" && <O />}
+      <Content>
+        {content === "X" && <img src={X} />}
+        {content === "O" && <img src={O} />}
+      </Content>
     </Frame>
   );
 }
