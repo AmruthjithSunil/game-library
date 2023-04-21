@@ -32,8 +32,8 @@ const Title = styled.h1`
 
 const TurnDisplay = styled.div`
   color: white;
-  margin: 50px;
-  font-size: 30px;
+  margin: 48px;
+  font-size: 32px;
 `;
 
 export default function TicTacToe() {
@@ -81,7 +81,7 @@ export default function TicTacToe() {
     <>
       <Link to="/">
         <BackName>
-          <img src={backArrow} height="15px" />
+          <img src={backArrow} height="16px" style={{ marginRight: "8px" }} />
           Home
         </BackName>
       </Link>

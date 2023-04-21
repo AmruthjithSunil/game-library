@@ -5,7 +5,7 @@ import O from "./O.svg";
 const Frame = styled.div`
   width: 109px;
   height: 109px;
-  border: solid 3px #ffffcc;
+  border: solid 2px #ffffcc;
   border-left: ${({ id }) => id % 3 === 0 && "4px solid #ffffcc"};
   border-right: ${({ id }) => id % 3 === 2 && "4px solid #ffffcc"};
   border-top: ${({ id }) => Math.floor(id / 3) === 0 && "4px solid #ffffcc"};
