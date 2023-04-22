@@ -16,9 +16,7 @@ const GameName = styled.h3`
 `;
 
 const Frame = styled.div`
-  background: #fff8;
   margin: 8px 0;
-  border-radius: 5px;
 `;
 
 const TurnDisplay = styled.div`
