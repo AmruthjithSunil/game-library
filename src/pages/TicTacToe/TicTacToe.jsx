@@ -35,10 +35,15 @@ export default function TicTacToe() {
   //player1 is false and player2 is true
 
   function updateActivePlayer() {
-    setActivePlayer((activePlayer) => !activePlayer);
+    if (activePlayer) {
+      setActivePlayer(false);
+    } else {
+      setActivePlayer(true);
+    }
   }
 
   const [victor, setVictor] = useState("");
+  const [winReason, setWinReason] = useState("");
 
   const [boxes, setBoxes] = useState([
     [
@@ -67,8 +72,10 @@ export default function TicTacToe() {
       const row = boxes[rowId];
       if (
         row[0].content === row[1].content &&
-        row[2].content === row[0].content
+        row[2].content === row[0].content &&
+        row[0].content !== ""
       ) {
+        setWinReason(`row${rowId}`);
         return row[0].content;
       }
       return "";
@@ -92,8 +99,10 @@ export default function TicTacToe() {
       ];
       if (
         col[0].content === col[1].content &&
-        col[2].content === col[0].content
+        col[2].content === col[0].content &&
+        col[0].content !== ""
       ) {
+        setWinReason(`col${colId}`);
         return col[0].content;
       }
       return "";
@@ -118,11 +127,11 @@ export default function TicTacToe() {
 
       if (
         diagonal1[0].content === diagonal1[1].content &&
-        diagonal1[2].content === diagonal1[0].content
+        diagonal1[2].content === diagonal1[0].content &&
+        diagonal1[0].content !== ""
       ) {
-        if (diagonal1[0].content !== "") {
-          return diagonal1[0].content;
-        }
+        setWinReason("dia1");
+        return diagonal1[0].content;
       }
 
       const diagonal2 = [
@@ -133,8 +142,10 @@ export default function TicTacToe() {
 
       if (
         diagonal2[0].content === diagonal2[1].content &&
-        diagonal2[2].content === diagonal2[0].content
+        diagonal2[2].content === diagonal2[0].content &&
+        diagonal2[0].content !== ""
       ) {
+        setWinReason("dia2");
         return diagonal2[0].content;
       }
 
@@ -187,6 +198,7 @@ export default function TicTacToe() {
     ]);
     setActivePlayer(false);
     setVictor("");
+    setWinReason("");
   }
 
   return (
@@ -199,9 +211,6 @@ export default function TicTacToe() {
       </Link>
       <Title>Tic Tac Toe</Title>
       <PlayGround>
-        {victor !== "" && (
-          <PlayAgain victor={victor} resetHandler={resetHandler} />
-        )}
         {boxes.map((row) => (
           <Row key={row[0].id}>
             {row.map((box) => (
@@ -213,10 +222,14 @@ export default function TicTacToe() {
                 activePlayer={activePlayer}
                 updateActivePlayer={updateActivePlayer}
                 victor={victor}
+                winReason={winReason}
               />
             ))}
           </Row>
         ))}
+        {victor !== "" && (
+          <PlayAgain victor={victor} resetHandler={resetHandler} />
+        )}
         {victor === "" && (
           <Reset activePlayer={activePlayer} resetHandler={resetHandler} />
         )}

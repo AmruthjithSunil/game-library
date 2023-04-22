@@ -21,6 +21,16 @@ const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  ${({ id, winReason }) => {
+    if (
+      (winReason[0] === "r" && winReason[3] * 1 !== Math.floor(id / 3)) ||
+      (winReason[0] === "c" && winReason[3] * 1 !== id % 3) ||
+      (winReason === "dia1" && id % 4 !== 0) ||
+      (winReason === "dia2" && (id % 2 !== 0 || id === 8 || id === 0))
+    ) {
+      return "opacity: 0.4;";
+    }
+  }}
 `;
 
 export default function Box({
@@ -30,6 +40,7 @@ export default function Box({
   updateActivePlayer,
   content,
   victor,
+  winReason,
 }) {
   function clickHandler() {
     if (content !== "" || victor !== "") {
@@ -42,7 +53,7 @@ export default function Box({
 
   return (
     <Frame id={id} onClick={clickHandler}>
-      <Content>
+      <Content id={id} onClick={clickHandler} winReason={winReason}>
         {content === "X" && <img src={X} />}
         {content === "O" && <img src={O} />}
       </Content>
