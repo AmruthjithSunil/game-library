@@ -15,15 +15,21 @@ const GameName = styled.h3`
   color: white;
 `;
 
+const Frame = styled.div`
+  background: #fff8;
+  margin: 8px 0;
+  border-radius: 5px;
+`;
+
 const TurnDisplay = styled.div`
   color: white;
-  margin: 32px;
+  margin: 8px;
   font-size: 32px;
 `;
 
 export default function PlayAgain({ victor, resetHandler }) {
   return (
-    <>
+    <Frame>
       <TurnDisplay>
         {victor === "X" && <img src={X} />}
         {victor === "O" && <img src={O} />} Wins
@@ -31,6 +37,6 @@ export default function PlayAgain({ victor, resetHandler }) {
       <GameButton onClick={resetHandler}>
         <GameName>PlayAgain</GameName>
       </GameButton>
-    </>
+    </Frame>
   );
 }

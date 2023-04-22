@@ -199,6 +199,9 @@ export default function TicTacToe() {
       </Link>
       <Title>Tic Tac Toe</Title>
       <PlayGround>
+        {victor !== "" && (
+          <PlayAgain victor={victor} resetHandler={resetHandler} />
+        )}
         {boxes.map((row) => (
           <Row key={row[0].id}>
             {row.map((box) => (
@@ -216,9 +219,6 @@ export default function TicTacToe() {
         ))}
         {victor === "" && (
           <Reset activePlayer={activePlayer} resetHandler={resetHandler} />
-        )}
-        {victor !== "" && (
-          <PlayAgain victor={victor} resetHandler={resetHandler} />
         )}
       </PlayGround>
     </>
