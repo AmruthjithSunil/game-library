@@ -29,9 +29,10 @@ export default function Box({
   activePlayer,
   updateActivePlayer,
   content,
+  victor,
 }) {
   function clickHandler() {
-    if (content != "") {
+    if (content !== "" || victor !== "") {
       return;
     }
     const c = activePlayer ? "O" : "X";

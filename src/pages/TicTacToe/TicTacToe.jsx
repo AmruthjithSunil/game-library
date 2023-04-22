@@ -1,20 +1,13 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Box from "./Box";
-import { useState } from "react";
-import O from "./O.svg";
-import X from "./X.svg";
+import { useEffect, useState } from "react";
 import backArrow from "../../UI/Svg/backArrow.png";
+import Reset from "./Reset";
+import PlayAgain from "./PlayAgain";
 
 const Row = styled.div`
   display: flex;
-`;
-
-const PlayGround = styled.div`
-  width: 327px;
-  margin: auto;
-  margin-top: 30px;
-  text-align: center;
 `;
 
 const BackName = styled.button`
@@ -25,15 +18,16 @@ const BackName = styled.button`
   color: white;
 `;
 
-const Title = styled.h1`
-  color: white;
+const PlayGround = styled.div`
+  width: 327px;
+  margin: auto;
+  margin-top: 30px;
   text-align: center;
 `;
 
-const TurnDisplay = styled.div`
+const Title = styled.h1`
   color: white;
-  margin: 32px;
-  font-size: 32px;
+  text-align: center;
 `;
 
 export default function TicTacToe() {
@@ -43,6 +37,8 @@ export default function TicTacToe() {
   function updateActivePlayer() {
     setActivePlayer((activePlayer) => !activePlayer);
   }
+
+  const [victor, setVictor] = useState("");
 
   const [boxes, setBoxes] = useState([
     [
@@ -61,6 +57,37 @@ export default function TicTacToe() {
       { id: 8, content: "" },
     ],
   ]);
+
+  useEffect(() => {
+    if (victor !== "") {
+      return;
+    }
+    function isRowFull(rowId) {
+      const row = boxes[rowId];
+      if (
+        row[0].content === row[1].content &&
+        row[2].content === row[0].content
+      ) {
+        return row[0].content;
+      }
+      return "";
+    }
+
+    function rowCheck() {
+      for (let i = 0; i < 3; i++) {
+        const temp = isRowFull(i);
+        if (temp !== "") {
+          return temp;
+        }
+      }
+      return "";
+    }
+
+    const temp = rowCheck();
+    if (temp !== "") {
+      setVictor(temp);
+    }
+  }, [JSON.stringify(boxes)]);
 
   function updateBoxes(id, content) {
     setBoxes((boxes) => {
@@ -109,21 +136,15 @@ export default function TicTacToe() {
                 updateBoxes={updateBoxes}
                 activePlayer={activePlayer}
                 updateActivePlayer={updateActivePlayer}
+                victor={victor}
               />
             ))}
           </Row>
         ))}
-        <TurnDisplay>
-          {activePlayer ? (
-            <img src={O} height="32px" />
-          ) : (
-            <img src={X} height="32px" />
-          )}
-          's turn
-        </TurnDisplay>
-        <div>
-          <BackName onClick={resetHandler}>Reset</BackName>
-        </div>
+        {victor === "" && (
+          <Reset activePlayer={activePlayer} resetHandler={resetHandler} />
+        )}
+        {victor !== "" && <PlayAgain victor={victor} />}
       </PlayGround>
     </>
   );
