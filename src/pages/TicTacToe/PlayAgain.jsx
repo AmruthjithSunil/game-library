@@ -9,10 +9,6 @@ const GameButton = styled.button`
   background: #ff7f50;
   border-radius: 8px;
   border-color: #ff7f50;
-  &:active {
-    width: 350px;
-    height: 70px;
-  }
 `;
 
 const GameName = styled.h3`
@@ -25,14 +21,14 @@ const TurnDisplay = styled.div`
   font-size: 32px;
 `;
 
-export default function PlayAgain({ victor }) {
+export default function PlayAgain({ victor, resetHandler }) {
   return (
     <>
       <TurnDisplay>
         {victor === "X" && <img src={X} />}
         {victor === "O" && <img src={O} />} Wins
       </TurnDisplay>
-      <GameButton>
+      <GameButton onClick={resetHandler}>
         <GameName>PlayAgain</GameName>
       </GameButton>
     </>

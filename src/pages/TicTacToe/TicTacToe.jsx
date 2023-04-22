@@ -62,6 +62,7 @@ export default function TicTacToe() {
     if (victor !== "") {
       return;
     }
+
     function isRowFull(rowId) {
       const row = boxes[rowId];
       if (
@@ -83,9 +84,79 @@ export default function TicTacToe() {
       return "";
     }
 
-    const temp = rowCheck();
-    if (temp !== "") {
-      setVictor(temp);
+    function isColFull(colId) {
+      const col = [
+        { ...boxes[0][colId] },
+        { ...boxes[1][colId] },
+        { ...boxes[2][colId] },
+      ];
+      if (
+        col[0].content === col[1].content &&
+        col[2].content === col[0].content
+      ) {
+        return col[0].content;
+      }
+      return "";
+    }
+
+    function colCheck() {
+      for (let i = 0; i < 3; i++) {
+        const temp = isColFull(i);
+        if (temp !== "") {
+          return temp;
+        }
+      }
+      return "";
+    }
+
+    function diagonalCheck() {
+      const diagonal1 = [
+        { ...boxes[0][0] },
+        { ...boxes[1][1] },
+        { ...boxes[2][2] },
+      ];
+
+      if (
+        diagonal1[0].content === diagonal1[1].content &&
+        diagonal1[2].content === diagonal1[0].content
+      ) {
+        if (diagonal1[0].content !== "") {
+          return diagonal1[0].content;
+        }
+      }
+
+      const diagonal2 = [
+        { ...boxes[0][2] },
+        { ...boxes[1][1] },
+        { ...boxes[2][0] },
+      ];
+
+      if (
+        diagonal2[0].content === diagonal2[1].content &&
+        diagonal2[2].content === diagonal2[0].content
+      ) {
+        return diagonal2[0].content;
+      }
+
+      return "";
+    }
+
+    const tempRow = rowCheck();
+    if (tempRow !== "") {
+      setVictor(tempRow);
+      return;
+    }
+
+    const tempCol = colCheck();
+    if (tempCol !== "") {
+      setVictor(tempCol);
+      return;
+    }
+
+    const tempDiagonal = diagonalCheck();
+    if (tempDiagonal !== "") {
+      setVictor(tempDiagonal);
+      return;
     }
   }, [JSON.stringify(boxes)]);
 
@@ -114,6 +185,8 @@ export default function TicTacToe() {
         { id: 8, content: "" },
       ],
     ]);
+    setActivePlayer(false);
+    setVictor("");
   }
 
   return (
@@ -144,7 +217,9 @@ export default function TicTacToe() {
         {victor === "" && (
           <Reset activePlayer={activePlayer} resetHandler={resetHandler} />
         )}
-        {victor !== "" && <PlayAgain victor={victor} />}
+        {victor !== "" && (
+          <PlayAgain victor={victor} resetHandler={resetHandler} />
+        )}
       </PlayGround>
     </>
   );

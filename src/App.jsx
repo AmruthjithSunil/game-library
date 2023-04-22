@@ -15,10 +15,6 @@ const GameButton = styled.button`
   background: #ff7f50;
   border-radius: 8px;
   border-color: #ff7f50;
-  &:active {
-    width: 350px;
-    height: 70px;
-  }
 `;
 
 const GameName = styled.h3`
