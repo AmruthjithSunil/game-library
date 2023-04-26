@@ -15,6 +15,7 @@ const GameButton = styled.button`
   background: #ff7f50;
   border-radius: 8px;
   border-color: #ff7f50;
+  margin-top: 16px;
 `;
 
 const GameName = styled.h3`
@@ -28,6 +29,12 @@ function App() {
       <Link to="/tictactoe">
         <GameButton>
           <GameName>TicTacToe</GameName>
+        </GameButton>
+      </Link>
+      <br />
+      <Link to="/quickmath">
+        <GameButton>
+          <GameName>Quick Math</GameName>
         </GameButton>
       </Link>
     </Frame>

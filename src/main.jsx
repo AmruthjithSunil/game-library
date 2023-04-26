@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TicTacToe from "./pages/TicTacToe/TicTacToe";
+import QuickMath from "./pages/QuickMath/QuickMath";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: "/tictactoe",
     element: <TicTacToe />,
+  },
+  {
+    path: "/quickmath",
+    element: <QuickMath />,
   },
 ]);
 
