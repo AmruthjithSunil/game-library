@@ -53,7 +53,7 @@ export default function Box({
 
   return (
     <Frame id={id} onClick={clickHandler}>
-      <Content id={id} onClick={clickHandler} winReason={winReason}>
+      <Content id={id} winReason={winReason}>
         {content === "X" && <img src={X} />}
         {content === "O" && <img src={O} />}
       </Content>

@@ -5,6 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TicTacToe from "./pages/TicTacToe/TicTacToe";
 import QuickMath from "./pages/QuickMath/QuickMath";
+import ChainReaction from "./pages/ChainReaction/ChainReaction";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/quickmath",
     element: <QuickMath />,
+  },
+  {
+    path: "/chainreaction",
+    element: <ChainReaction />,
   },
 ]);
 

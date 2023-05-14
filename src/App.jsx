@@ -1,43 +1,15 @@
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-
-const Title = styled.h1`
-  color: white;
-`;
-
-const Frame = styled.div`
-  text-align: center;
-`;
-
-const GameButton = styled.button`
-  width: 325px;
-  height: 62px;
-  background: #ff7f50;
-  border-radius: 8px;
-  border-color: #ff7f50;
-  margin-top: 16px;
-`;
-
-const GameName = styled.h3`
-  color: white;
-`;
+import GameButton from "./components/GameButton";
 
 function App() {
   return (
-    <Frame>
-      <Title>Home</Title>
-      <Link to="/tictactoe">
-        <GameButton>
-          <GameName>TicTacToe</GameName>
-        </GameButton>
-      </Link>
+    <div style={{ textAlign: "center" }}>
+      <h1 style={{ color: "white" }}>Home</h1>
+      <GameButton url="/tictactoe" name="TicTacToe" />
       <br />
-      <Link to="/quickmath">
-        <GameButton>
-          <GameName>Quick Math</GameName>
-        </GameButton>
-      </Link>
-    </Frame>
+      <GameButton url="/quickmath" name="Quick Math" />
+      <br />
+      <GameButton url="/chainreaction" name="Chain Reaction" />
+    </div>
   );
 }
 
