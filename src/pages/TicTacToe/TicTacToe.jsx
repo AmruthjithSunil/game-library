@@ -1,21 +1,12 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Box from "./Box";
 import { useEffect, useState } from "react";
-import backArrow from "../../UI/Svg/backArrow.png";
 import Reset from "./Reset";
 import PlayAgain from "./PlayAgain";
+import BackButton from "../../components/BackButton";
 
 const Row = styled.div`
   display: flex;
-`;
-
-const BackName = styled.button`
-  margin: 8px;
-  background: #36454f;
-  border: none;
-  font-size: 20px;
-  color: white;
 `;
 
 const PlayGround = styled.div`
@@ -203,12 +194,7 @@ export default function TicTacToe() {
 
   return (
     <>
-      <Link to="/">
-        <BackName>
-          <img src={backArrow} height="16px" style={{ marginRight: "8px" }} />
-          Home
-        </BackName>
-      </Link>
+      <BackButton />
       <Title>Tic Tac Toe</Title>
       <PlayGround>
         {boxes.map((row) => (
