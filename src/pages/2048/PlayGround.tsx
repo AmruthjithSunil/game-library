@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { initBoxes } from "./util";
+import Box from "./Box";
 
 const Frame = styled.div`
   width: 327px;
@@ -14,7 +15,11 @@ export default function PlayGround() {
   return (
     <Frame>
       {boxes.map((row) => (
-        <div key={row[0].id} style={{ display: "flex" }}></div>
+        <div key={row[0].id} style={{ display: "flex" }}>
+          {row.map((box) => (
+            <Box key={box.id} content={box.content} />
+          ))}
+        </div>
       ))}
     </Frame>
   );

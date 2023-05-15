@@ -7,7 +7,7 @@ const initBoxes: Box[][] = [];
 for (let i = 0; i < 4; i++) {
   const row: Box[] = [];
   for (let j = 0; j < 4; j++) {
-    row.push({ id: i * 4 + j, content: 0 });
+    row.push({ id: i * 4 + j, content: 2 });
   }
   initBoxes.push(row);
 }
