@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import TicTacToe from "./pages/TicTacToe/TicTacToe";
 import QuickMath from "./pages/QuickMath/QuickMath";
 import ChainReaction from "./pages/ChainReaction/ChainReaction";
+import Two048 from "./pages/2048/2048";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/chainreaction",
     element: <ChainReaction />,
+  },
+  {
+    path: "/2048",
+    element: <Two048 />,
   },
 ]);
 
