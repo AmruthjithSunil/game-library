@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import BackArrow from "../UI/BackArrow";
+import BackArrowSvg from "../UI/Svg/BackArrowSvg";
 // import backArrow from "../UI/Svg/backArrow.png";
 
 const Name = styled.button`
@@ -21,8 +22,8 @@ export default function BackButton() {
           height="16px"
           style={{ marginRight: "8px" }}
         /> */}
-        {/* <BackArrowSvg /> */}
-        <BackArrow />
+        <BackArrowSvg />
+        {/* <BackArrow /> */}
         Home
       </Name>
     </Link>
