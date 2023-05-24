@@ -7,10 +7,10 @@ function App() {
       <GameButton url="/tictactoe" name="TicTacToe" />
       <br />
       <GameButton url="/2048" name="2048" />
-      <br />
+      {/* <br />
       <GameButton url="/quickmath" name="Quick Math" />
       <br />
-      <GameButton url="/chainreaction" name="Chain Reaction" />
+      <GameButton url="/chainreaction" name="Chain Reaction" /> */}
     </div>
   );
 }
